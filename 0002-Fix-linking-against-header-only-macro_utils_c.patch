@@ -1,0 +1,25 @@
+From 72f02245a533f56aae1ad91e093c167f505128ab Mon Sep 17 00:00:00 2001
+From: "Brett T. Warden" <brett.t.warden@intel.com>
+Date: Mon, 16 Sep 2024 16:12:19 -0700
+Subject: [PATCH] Fix linking against header-only macro_utils_c
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 860e1e580b85..b290f8ee0acf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -153,7 +153,7 @@ SOURCE_GROUP(devdoc FILES ${umock_c_md_files})
+ 
+ add_library(umock_c ${umock_c_c_files} ${umock_c_h_files} ${umock_c_md_files})
+ 
+-target_link_libraries(umock_c macro_utils_c)
++target_link_libraries(umock_c INTERFACE macro_utils_c)
+ 
+ target_include_directories(umock_c
+     PUBLIC
+-- 
+2.46.0
+

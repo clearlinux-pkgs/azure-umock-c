@@ -1,0 +1,26 @@
+From 901bdf3db3c895d12e81b2bd72acb608c639d77a Mon Sep 17 00:00:00 2001
+From: "Brett T. Warden" <brett.t.warden@intel.com>
+Date: Fri, 13 Sep 2024 16:24:57 -0700
+Subject: [PATCH] Fix broken cmake
+
+See https://github.com/Azure/umock-c/issues/353
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8c8dc541172b..860e1e580b85 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -184,7 +184,7 @@ endif()
+ 
+ # make an install target so we can produce a Linux native client package.
+ # only the header files are required for the native client.
+-install_library_includes(umock_c umock_c ${umock_c_h_files})
++install(FILES ${umock_c_h_files} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/umock_c)
+ 
+ if(${run_reals_check})
+     add_reals_check_target()
+-- 
+2.46.0
+
