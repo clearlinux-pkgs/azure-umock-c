@@ -1,0 +1,5 @@
+# Move the installed header files to a real location
+if [[ -d %{buildroot}/umock_c ]]; then
+	mkdir -p %{buildroot}/usr/include
+	mv %{buildroot}/umock_c %{buildroot}/usr/include/
+fi
